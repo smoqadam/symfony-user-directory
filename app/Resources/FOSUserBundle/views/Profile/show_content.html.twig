@@ -1,0 +1,29 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{% block body %}
+
+<div class="col-md-8 col-md-offset-2">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-md-12"><h2 class="page-header">Profile</h2></div>
+            <div class="col-sm-6 col-md-4">
+                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" alt="" class="img-rounded img-responsive" />
+            </div>
+            <div class="col-sm-6 col-md-8">
+                <h4>{{ user.name }} {{ user.lastName }}</h4>
+                <p>
+                    <i class="glyphicon glyphicon-envelope"></i> {{ user.email }}
+                    <br />
+                    Username: {{ user.username }}
+                    <br />
+                    Age: {{ user.Age }}
+                    <br />
+                {% if user.id == app.user.id %}
+                    <a href="/profile/edit" class="btn btn-primary btn-xs">Edit</a>
+                    <a href="/profile/change-password" class="btn btn-primary btn-xs">Change Password</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}

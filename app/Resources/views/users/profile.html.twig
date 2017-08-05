@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="col-md-8 col-md-offset-2">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" alt="" class="img-rounded img-responsive" />
+            </div>
+            <div class="col-sm-6 col-md-8">
+                <h4>{{ user.name }} {{ user.lastName }}</h4>
+                <p>
+                    <i class="glyphicon glyphicon-envelope"></i> {{ user.email }}
+                    <br />
+                    <i class="glyphicon glyphicon-ban-circle"></i> {{ user.Age }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

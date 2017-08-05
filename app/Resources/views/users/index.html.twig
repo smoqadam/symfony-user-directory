@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="text-center">Welcome to User Directory!</h1>
+    <p>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    {% else %}
+        <p style="text-align:center;">Please <a href="/login">Login</a>/<a href="/register">Register</a> to conitunue your profile .</p>
+    {% endif %}
+    </p>
+{% endblock %}

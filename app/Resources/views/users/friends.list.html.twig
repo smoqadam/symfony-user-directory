@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <h4>Friends</h4>
+                <hr style="border-top:1px solid rgba(42,42,42,.1)">
+                <table class="table">
+                    <thead>
+                    <th>
+                        name
+                    </th>
+                    <th>
+                        family
+                    </th>
+                    <th>
+                        email
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    </thead>
+                    <tbody>
+                    {% for user in friends %}
+                            <tr>
+                                <td>
+                                    <a href="/user/{{ user.friend.id }}" target="_blank">
+                                        {{ user.friend.name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/user/{{ user.id }}" target="_blank">
+                                        {{ user.friend.lastName }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/user/{{ user.id }}" target="_blank">
+                                        {{ user.friend.email }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ user.friend.age }}
+                                </td>
+
+                            </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

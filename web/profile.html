@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+
+    <style>
+
+        body, html{
+          padding:0px;
+          margin:0px;
+          background-color:#f0f0f0;
+        }
+
+        *{
+          box-sizing: border-box;
+        }
+
+        .top-header ul{
+          list-style-type: none;
+          float:left;
+          margin:0px;
+          padding:0px 10px;
+        }
+
+        .top-header ul li{
+          display:inline-block;
+          padding:15px;
+          cursor: pointer;
+        }
+
+        .top-header ul li:hover{
+          background-color:#eaeaea;
+        }
+
+        .top-header a:hover{
+          text-decoration: none;
+        }
+
+        .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+        small {
+          display: block;
+          line-height: 1.428571429;
+          color: #999;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="top-header" style='background-color:#fafafa;overflow: auto;'>
+      <ul>
+          <li>
+              <a href='#'>
+                logout
+              </a>
+          </li>
+          <li style="padding:0px;">
+              <input type="text" placeholder="search name, family, email " style="width:150%;" class="form-control"/>
+          </li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class='col-md-12'>
+          <br>
+          <div class="row">
+            <div class="col-md-4" style="background-color: #fff;padding: 1px;">
+              <ul class="nav nav-pills nav-stacked" role="tablist">
+                <li role="presentation" class="active">
+                  <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                  Profile
+                </a></li>
+                <li role="presentation"><a href="#friends" aria-controls="friends" role="tab" data-toggle="tab">
+                  friends
+                </a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+                  edit-profile
+                </a></li>
+                <li role="presentation"><a href="#second-profile" aria-controls="second-profile" role="tab" data-toggle="tab">
+                  second-profile
+                </a></li>
+              </ul>
+            </div>
+            <div class="col-md-8">
+              <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="profile">
+                  <h4>Profile</h4>
+                  <hr style="border-top:1px solid rgba(42,42,42,.1)">
+                  <input type="text" class="form-control" placeholder="name" aria-describedby="basic-addon1">
+                  <br>
+                  <input type="text" class="form-control" placeholder="family" aria-describedby="basic-addon1">
+                  <br>
+                  <input type="text" class="form-control" placeholder="email" aria-describedby="basic-addon1">
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="friends">
+                  <h4>friends</h4>
+                  <hr style="border-top:1px solid rgba(42,42,42,.1)">
+                  <table class="table">
+                      <thead>
+                        <th>
+                            name
+                        </th>
+                        <th>
+                            family
+                        </th>
+                        <th>
+                            email
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            mohammad
+                          </td>
+                          <td>
+                            kaab
+                          </td>
+                          <td>
+                            mohammad.kaab@gmail.com
+                          </td>
+                        </tr>
+                      </tbody>
+                  </table>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="settings">
+                  <h4>edit-profile</h4>
+                  <hr style="border-top:1px solid rgba(42,42,42,.1)">
+                  <input type="text" class="form-control" placeholder="name" aria-describedby="basic-addon1">
+                  <br>
+                  <input type="text" class="form-control" placeholder="family" aria-describedby="basic-addon1">
+                  <br>
+                  <input type="text" class="form-control" placeholder="email" aria-describedby="basic-addon1">
+                  <br>
+                  <input type="submit" class="btn blue-madison" value="edit"/>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="search-friends">
+                  <h4>search-friends</h4>
+                  <hr style="border-top:1px solid rgba(42,42,42,.1)">
+                  <input type="text" class="form-control" placeholder="search name, family, email" aria-describedby="basic-addon1">
+                  <table class="table">
+                      <thead>
+                        <th>
+                            name
+                        </th>
+                        <th>
+                            family
+                        </th>
+                        <th>
+                            email
+                        </th>
+                        <th>
+                            Add as friend
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            mohammad
+                          </td>
+                          <td>
+                            kaab
+                          </td>
+                          <td>
+                            mohammad.kaab@gmail.com
+                          </td>
+                          <td>
+                            <a href="#" class="btn btn-success">Add</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                  </table>
+
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="second-profile">
+                  <div class="col-xs-12 col-sm-10 col-md-10">
+                      <div class="well well-sm">
+                          <div class="row">
+                              <div class="col-sm-6 col-md-4">
+                                  <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" alt="" class="img-rounded img-responsive" />
+                              </div>
+                              <div class="col-sm-6 col-md-8">
+                                  <h4>
+                                      Bhaumik Patel</h4>
+                                  <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
+                                  </i></cite></small>
+                                  <p>
+                                      <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                                      <br />
+                                      <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                                      <br />
+                                      <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                                  <!-- Split button -->
+                                  <div class="btn-group">
+                                      <button type="button" class="btn btn-primary">
+                                          Social</button>
+                                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                          <span class="caret"></span><span class="sr-only">Social</span>
+                                      </button>
+                                      <ul class="dropdown-menu" role="menu">
+                                          <li><a href="#">Twitter</a></li>
+                                          <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                                          <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                                          <li class="divider"></li>
+                                          <li><a href="#">Github</a></li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+  </body>
+</html>

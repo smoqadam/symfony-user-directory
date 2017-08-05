@@ -1,0 +1,45 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+    <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h4>
+                Signup
+            </h4>
+            <hr>
+
+            {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder':'First Name'} }) }}
+            {{ form_errors(form.name, {'attr':{'class':'alert alert-danger'}}) }}
+            <br>
+
+            {{ form_widget(form.last_name, {'attr': {'class': 'form-control', 'placeholder':'Last Name'} }) }}
+            {{ form_errors(form.last_name, {'attr':{'class':'alert alert-danger'}}) }}
+            <br>
+
+            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder':'Email'} }) }}
+            {{ form_errors(form.email, {'attr':{'class':'alert alert-danger'}}) }}
+            <br>
+            {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder':'Username'} }) }}
+            {{ form_errors(form.username, {'attr':{'class':'alert alert-danger'}}) }}
+            <br>
+            {{ form_widget(form.plainPassword.first, {'type':'password', 'attr': {'class': 'form-control', 'placeholder':'Password'} }) }}
+            {{ form_errors(form.plainPassword.first, {'attr':{'class':'alert alert-danger'}}) }}
+
+            <br>
+            {{ form_widget(form.plainPassword.second, {'type':'password', 'attr': {'class': 'form-control', 'placeholder':'Confirm password'} }) }}
+            {{ form_errors(form.plainPassword.second, {'attr':{'class':'alert alert-danger'}}) }}
+
+            <br>
+            {{ form_widget(form.age, {'attr': {'class': 'form-control', 'placeholder':'Age'} }) }}
+            {{ form_errors(form.age, {'attr':{'class':'alert alert-danger'}}) }}
+
+            <br>
+        </div>
+        <div class="panel-footer">
+            <input type="submit" class="btn blue-madison" value="Register"/>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+    <div class="panel-body">
+
+    <h4>Search Users</h4>
+        <hr style="border-top:1px solid rgba(42,42,42,.1)">
+        <form action="/search" method="get">
+            <input type="text" name="query"
+                   {% if app.request.get('query') %} value="{{ app.request.get('query') }}"  {% endif %}
+                   class="form-control" placeholder="search name, family, email" aria-describedby="basic-addon1">
+        </form>
+        <table class="table">
+            <thead>
+            <th>
+                name
+            </th>
+            <th>
+                family
+            </th>
+            <th>
+                email
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Add as friend
+            </th>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                {% if user.id != app.user.id %}
+                        <tr>
+                            <td>
+                                <a href="/user/{{ user.id }}" target="_blank">
+                                    {{ user.name }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/user/{{ user.id }}" target="_blank">
+                                {{ user.lastName }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/user/{{ user.id }}" target="_blank">
+                                {{ user.email }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ user.age }}
+                            </td>
+                            <td>
+                                {% if user.id not in myFriends|keys  %}
+                                    <a href="/friends/add/{{ user.id }}" class="btn btn-xs btn-default">Add</a>
+                                {% else %}
+                                    {% if myFriends[user.id] %}
+                                        <a href="#" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-check"></span> </a>
+                                    {% else %}
+                                        <a href="#" class="btn btn-xs btn-primary">Request sent</a>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    </div>
+    </div>
+{% endblock %}

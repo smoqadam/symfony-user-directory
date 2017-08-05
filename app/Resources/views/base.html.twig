@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <style>
+
+        body, html{
+            padding:0px;
+            margin:0px;
+            background-color:#f0f0f0;
+        }
+
+        *{
+            box-sizing: border-box;
+        }
+        body, html{
+            padding:0px;
+            margin:0px;
+            background-color:#f0f0f0;
+        }
+
+        *{
+            box-sizing: border-box;
+        }
+
+        .top-header ul{
+            list-style-type: none;
+            float:left;
+            margin:0px;
+            padding:0px 10px;
+        }
+
+        .top-header ul li{
+            display:inline-block;
+            padding:15px;
+            cursor: pointer;
+        }
+
+        .top-header ul li:hover{
+            background-color:#eaeaea;
+        }
+
+        .top-header a:hover{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="top-header" style='background-color:#fafafa;overflow: auto;'>
+    <ul>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <li>
+            Logged in as <a href="/profile">{{ app.user.username }}</a> |
+            <a href="{{ path('fos_user_profile_edit') }}">
+                Edit Profile
+            </a>
+            |
+            <a href="{{ path('search') }}">
+                Users
+            </a>
+            |
+            <a href="{{ path('friends') }}">
+                Friends
+            </a>
+            |
+            <a href="{{ path('friend_requests') }}">
+                Friend Requests
+            </a>
+            |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        </li>
+        <li style="padding:0px;">
+            <form action="/search" >
+                <input type="text" name="query"
+                        {% if app.request.get('query') %} value="{{ app.request.get('query') }}"  {% endif %}
+                       placeholder="search name, family, email " style="width:150%;" class="form-control"/>
+            </form>
+        </li>
+        {% else %}
+            <h3 style="text-align:center;">Please <a href="/login">Login</a>/<a href="/register">Register</a> to conitunue your profile .</h3>
+        {% endif %}
+    </ul>
+</div>
+<div class="container">
+        <div class="col-md-10 col-md-offset-1 ">
+            {% if app.session.flashBag.has('success') %}
+                <div class="alert alert-success">
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if app.session.flashBag.has('error') %}
+                <div class="alert alert-error">
+                    {% for msg in app.session.flashBag.get('error') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+
+    </div>
+</div>
+</body>
+</html>

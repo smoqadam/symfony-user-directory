@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{#{% block body %}#}
+    {#<ul>#}
+        {#{% for user in requests %}#}
+            {#<li>{{ user.friend.name }}<a href="/friends/accept/{{ user.user.id }}">accept as friend</a></li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
+{#{% endblock %}#}
+
+{#{% extends 'base.html.twig' %}#}
+
+{% block body %}
+    {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if app.session.flashBag.has('error') %}
+        <div class="alert alert-error">
+            {% for msg in app.session.flashBag.get('error') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <h4>Friend Requests</h4>
+                <hr style="border-top:1px solid rgba(42,42,42,.1)">
+                <table class="table">
+                    <thead>
+                    <th>
+                        name
+                    </th>
+                    <th>
+                        family
+                    </th>
+                    <th>
+                        email
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    </thead>
+                    <tbody>
+                    {% for user in requests %}
+                        {{ dump(user) }}
+                        <tr>
+                            <td>
+                                <a href="/user/{{ user.user.id }}" target="_blank">
+                                    {{ user.user.name }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/user/{{ user.id }}" target="_blank">
+                                    {{ user.user.lastName }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/user/{{ user.id }}" target="_blank">
+                                    {{ user.user.email }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ user.user.age }}
+                            </td>
+                            <td>
+                                <a href="/friends/accept/{{ user.user.id }}" class="btn btn-success">Accept</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
