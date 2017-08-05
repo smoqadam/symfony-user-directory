@@ -105,12 +105,3 @@ fos_elastica:
                         model: AppBundle\Entity\User
                         provider: ~
                         finder: ~
-jms_serializer:
-    metadata:
-        directories:
-            AppBundle:
-                namespace_prefix: AppBundle
-                path: %kernel.root_dir%/serializer
-            FOSUB:
-                namespace_prefix: FOS\UserBundle
-                path: %kernel.root_dir%/serializer/FOSUB
