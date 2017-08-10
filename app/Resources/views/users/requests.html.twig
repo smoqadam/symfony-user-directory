@@ -1,15 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{#{% block body %}#}
-    {#<ul>#}
-        {#{% for user in requests %}#}
-            {#<li>{{ user.friend.name }}<a href="/friends/accept/{{ user.user.id }}">accept as friend</a></li>#}
-        {#{% endfor %}#}
-    {#</ul>#}
-{#{% endblock %}#}
-
-{#{% extends 'base.html.twig' %}#}
-
 {% block body %}
     {% if app.session.flashBag.has('success') %}
         <div class="alert alert-success">
@@ -51,7 +41,6 @@
                     </thead>
                     <tbody>
                     {% for user in requests %}
-                        {{ dump(user) }}
                         <tr>
                             <td>
                                 <a href="/user/{{ user.user.id }}" target="_blank">
