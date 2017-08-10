@@ -64,26 +64,26 @@ class UsersController extends Controller
         $search_query = $request->get('query');
 
         $cache = $this->get('cache.app');
-        $user_search_cache = $cache->getItem('users_search'.$search_query);
-        $user_search_cache->expiresAfter(300);
 
         if ($search_query) {
+            $user_search_cache = $cache->getItem('users_search'.$search_query);
+            $user_search_cache->expiresAfter(300);
             if ($user_search_cache->isHit()) {
                 $result = $user_search_cache->get();
             } else {
                 $finder = $this->container->get('fos_elastica.finder.users.user');
                 $boolQuery = new Query\BoolQuery();
                 $innerQuery = new Query\Match();
-                $innerQuery->setField('_all', array('query' => "*$search_query*"));
-                $innerQuery->setFieldFuzziness('_all', 1);
+                $innerQuery->setField('_all', array('query' => $search_query));
+                $innerQuery->setFieldFuzziness('_all', 'AUTO');
                 $boolQuery->addShould($innerQuery);
                 $result = $finder->find($boolQuery);
-                $user_search_cache->set($request);
+                $user_search_cache->set($result);
                 $cache->save($user_search_cache);
             }
         } else {
             $all_users_cache = $cache->getItem('all_users');
-            $all_users_cache ->expiresAfter(300);
+            $all_users_cache->expiresAfter(300);
             if ($all_users_cache->isHit()) {
                 $result = $all_users_cache->get();
             } else {
